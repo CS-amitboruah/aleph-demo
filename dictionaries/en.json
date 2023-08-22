@@ -1,0 +1,9 @@
+{
+    "form":{
+        "name":"name",
+        "email":"email",
+        "age":"age",
+        "phone":"phone",
+        "chooseLanguage":"Choose Language"
+    }
+}
