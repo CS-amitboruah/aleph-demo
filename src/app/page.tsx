@@ -4,18 +4,17 @@ import TextInput from "@/components/formControls/TextInput";
 import AntButton from "@/components/common/Button/Button";
 import { formConstants } from "@/constants/formContants";
 import { useRouter } from "next/navigation";
-
-import Globalstyles, { FormWrapper } from "@/styles/Globalstyles";
+import { FormWrapper } from "@/styles/Globalstyles";
 import FormTitle from "@/components/common/FormTitle";
-
-// import { FormWrapper } from "@/styles/Global.styles";
 
 export default function Home() {
   const router = useRouter();
   const [form] = Form.useForm();
+
   const handleNext = (values: any) => {
-    console.log(values);
-    router.push("/details", { scroll: false });
+    const params = new URLSearchParams();
+    params.set("landing", JSON.stringify(values));
+    router.push(`/details?${params}`);
   };
 
   return (

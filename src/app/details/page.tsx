@@ -4,10 +4,10 @@ import AntButton from "@/components/common/Button/Button";
 import FormTitle from "@/components/common/FormTitle";
 import TextInput from "@/components/formControls/TextInput";
 import { formConstants } from "@/constants/formContants";
-import Globalstyles, { FormWrapper } from "@/styles/Globalstyles";
+import { FormWrapper } from "@/styles/Globalstyles";
 import { Form } from "antd";
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import React from "react";
 
 const page = () => {
   const router = useRouter();
