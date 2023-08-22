@@ -1,6 +1,7 @@
 "use client";
 
 import AntButton from "@/components/common/Button/Button";
+import FormTitle from "@/components/common/FormTitle";
 import TextInput from "@/components/formControls/TextInput";
 import { formConstants } from "@/constants/formContants";
 import Globalstyles, { FormWrapper } from "@/styles/Globalstyles";
@@ -14,13 +15,14 @@ const page = () => {
 
   const handleNext = (values: any) => {
     console.log(values);
-    router.push("/");
+    router.push("/localisation", { scroll: false });
   };
 
   return (
     <>
       <Globalstyles />
       <FormWrapper>
+        <FormTitle title="Localisation" />
         <Form form={form} onFinish={handleNext}>
           <TextInput
             type="text"

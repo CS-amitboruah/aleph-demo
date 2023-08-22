@@ -6,6 +6,7 @@ import { formConstants } from "@/constants/formContants";
 import { useRouter } from "next/navigation";
 
 import Globalstyles, { FormWrapper } from "@/styles/Globalstyles";
+import FormTitle from "@/components/common/FormTitle";
 
 // import { FormWrapper } from "@/styles/Global.styles";
 
@@ -20,8 +21,8 @@ export default function Home() {
   return (
     <>
       <Globalstyles />
-
       <FormWrapper>
+        <FormTitle title="Localisation" />
         <Form form={form} onFinish={handleNext}>
           <TextInput
             type="text"

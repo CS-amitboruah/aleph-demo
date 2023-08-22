@@ -16,6 +16,7 @@ export const FormWrapper = styled.div`
   margin: 0 auto;
   height: 100vh;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   .ant-form {
