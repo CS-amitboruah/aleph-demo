@@ -14,7 +14,12 @@ export const FormWrapper = styled.div`
   max-height: 80vh;
   overflow-y: auto;
   margin: 0 auto;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   .ant-form {
+    width: 100%;
     .ant-form-item {
       margin-bottom: 40px;
       .ant-form-item-control-input {
@@ -26,6 +31,10 @@ export const FormWrapper = styled.div`
           padding: 5px 0;
           color: #fff;
           font-size: 16px;
+          &::placeholder {
+            color: #fff;
+            opacity: 0.8;
+          }
           &:focus {
             + span {
               top: -20px;
@@ -34,11 +43,6 @@ export const FormWrapper = styled.div`
             }
           }
         }
-      }
-    }
-    .button-wrapper {
-      button {
-        margin-right: 15px;
       }
     }
   }
