@@ -7,8 +7,11 @@ const ButtonWrapper = styled(Button)`
   height: 100%;
   font-size: 18px;
   font-weight: 600;
+  background-color: #ff7a00;
+  color: #fff;
+  border: none;
   &:hover {
-    color: balck;
+    color: #fff !important;
   }
 `;
 type ButtonProps = {
