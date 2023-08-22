@@ -19,38 +19,35 @@ const page = () => {
   };
 
   return (
-    <>
-      <Globalstyles />
-      <FormWrapper>
-        <FormTitle title="Localisation" />
-        <Form form={form} onFinish={handleNext}>
-          <TextInput
-            type="text"
-            placeholder="Age"
-            name="age"
-            rules={[
-              {
-                required: true,
-                message: formConstants.ageRequire,
-              },
-            ]}
-          />
-          <TextInput
-            type="text"
-            placeholder="Phone"
-            name="phone"
-            rules={[
-              {
-                required: true,
-                message: formConstants.phoneRequire,
-              },
-            ]}
-          />
+    <FormWrapper>
+      <FormTitle title="Your details" />
+      <Form form={form} onFinish={handleNext}>
+        <TextInput
+          type="text"
+          placeholder="Age"
+          name="age"
+          rules={[
+            {
+              required: true,
+              message: formConstants.ageRequire,
+            },
+          ]}
+        />
+        <TextInput
+          type="text"
+          placeholder="Phone"
+          name="phone"
+          rules={[
+            {
+              required: true,
+              message: formConstants.phoneRequire,
+            },
+          ]}
+        />
 
-          <AntButton htmlType="submit" text="Next" />
-        </Form>
-      </FormWrapper>
-    </>
+        <AntButton htmlType="submit" text="Next" />
+      </Form>
+    </FormWrapper>
   );
 };
 

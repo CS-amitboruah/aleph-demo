@@ -20,9 +20,8 @@ export default function Home() {
 
   return (
     <>
-      <Globalstyles />
       <FormWrapper>
-        <FormTitle title="Localisation" />
+        <FormTitle title="About you" />
         <Form form={form} onFinish={handleNext}>
           <TextInput
             type="text"

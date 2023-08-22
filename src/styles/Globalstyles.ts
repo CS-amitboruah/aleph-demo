@@ -4,18 +4,22 @@ export default createGlobalStyle`
   body {
     margin: 0;
     padding: 0;
-    background: #1800e7;
+    /* background: #1800e7; */
+    background: rgb(33,62,147);
+background: linear-gradient(180deg, rgba(33,62,147,1) 0%, rgba(45,96,219,1) 100%);
   }
 `;
 
 export const FormWrapper = styled.div`
   padding: 20px;
   width: 40vw;
-  max-height: 80vh;
+  /* max-height: 80vh; */
   overflow-y: auto;
   margin: 0 auto;
-  height: 100vh;
+  height: calc(100vh - 40px);
   display: flex;
+
+  flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
@@ -42,6 +46,22 @@ export const FormWrapper = styled.div`
               color: #fff;
               font-size: 16px;
             }
+          }
+        }
+        .ant-select {
+          border-bottom: 1px solid #fff;
+          border-radius: 0;
+          .ant-select-selection-item {
+            color: #fff;
+          }
+          .ant-select-selection-placeholder {
+            color: #fff;
+            opacity: 0.8;
+          }
+          .ant-select-selector {
+            background: transparent;
+            border: none;
+            padding: 0;
           }
         }
       }

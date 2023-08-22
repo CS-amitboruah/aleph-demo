@@ -4,7 +4,7 @@ import { styled } from "styled-components";
 
 const ButtonWrapper = styled(Button)`
   padding: 12px 32px;
-  height: 100%;
+  height: auto;
   font-size: 18px;
   font-weight: 600;
   background-color: #ff7a00;

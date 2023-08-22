@@ -16,11 +16,13 @@
     "eslint": "8.47.0",
     "eslint-config-next": "13.4.19",
     "fs": "^0.0.1-security",
+    "http-status-codes": "^2.2.0",
     "next": "13.4.19",
     "nextjs-cors": "^2.1.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "styled-components": "^6.0.7",
     "typescript": "5.1.6"
-  }
+  },
+  "devDependencies": {}
 }

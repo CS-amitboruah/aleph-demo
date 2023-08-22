@@ -8,28 +8,25 @@ import React from "react";
 const page = () => {
   const [form] = Form.useForm();
   return (
-    <>
-      <Globalstyles />
+    <FormWrapper>
       <FormTitle title="Localisation" />
-      <FormWrapper>
-        <Form form={form}>
-          <SelectInput
-            options={[
-              { label: "English", value: "en" },
-              { label: "Bambara", value: "bm" },
-            ]}
-            placeholder="Select"
-            name="language"
-            rules={[
-              {
-                required: true,
-                message: "Select language is required",
-              },
-            ]}
-          />
-        </Form>
-      </FormWrapper>
-    </>
+      <Form form={form}>
+        <SelectInput
+          options={[
+            { label: "English", value: "en" },
+            { label: "Bambara", value: "bm" },
+          ]}
+          placeholder="Select"
+          name="language"
+          rules={[
+            {
+              required: true,
+              message: "Select language is required",
+            },
+          ]}
+        />
+      </Form>
+    </FormWrapper>
   );
 };
 

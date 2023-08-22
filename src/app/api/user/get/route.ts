@@ -1,31 +1,30 @@
-import { NextResponse } from "next/server";
+import fs from 'fs';
+import { StatusCodes } from 'http-status-codes';
+import { NextResponse } from 'next/server';
 
-export async function GET(
-    req: Request,
-) {
-    console.log("I am here");
+export async function GET(req: Request, res: Response) {
+  try {
+    const templateJson = fs.existsSync(`./data.json`);
 
-    try {
+    if (templateJson === true) {
+      let readTemplateJson = fs.readFileSync(`./data.json`);
 
-        // const body = await req.json();
-        // const { title, description } = body;
-        const data = {
-            name: "dj"
-        };
-        return NextResponse.json(data);
-        // const product = await prismadb.product.create({
-        //     data: {
-        //         title,
-        //         description
-        //     }
-        // });
-
-        // return NextResponse.json(product);
-
-    } catch (error) {
-
-        console.log("[PRODUCT_POST]", error);
-        return new NextResponse("Internal error", { status: 500 });
-
+      // Parse the JSON string
+      let jsonData = JSON.parse(readTemplateJson.toString());
+      return NextResponse.json({
+        total: jsonData?.data.length,
+        data: jsonData?.data,
+      });
+    } else {
+      return NextResponse.json({
+        message: 'No data found',
+        status: StatusCodes.NOT_FOUND,
+      });
     }
+  } catch (error) {
+    console.log('[USER_GET]', error);
+    return new NextResponse('Internal server error', {
+      status: StatusCodes.INTERNAL_SERVER_ERROR,
+    });
+  }
 }
