@@ -1,69 +1,52 @@
 import fs from 'fs';
-import { NextResponse } from "next/server";
+import { StatusCodes } from 'http-status-codes';
+import { NextResponse } from 'next/server';
 
-export async function POST(
-    req: Request,
-) {
-    console.log("I am here");
+function validateObjectValues(obj: Record<string, any>): boolean {
+  return Object.values(obj).every((value) => !!value);
+}
 
-    try {
-        const body = await req.json();
-        console.log(body);
+export async function POST(req: Request) {
+  try {
+    const body = await req.json();
+    if (validateObjectValues(body)) {
+      const templateJson = fs.existsSync(`./data.json`);
+
+      if (templateJson === false) {
         let data: any = [];
         data.push(body);
-        console.log(data, "temp");
-
-        // const { title, description } = body;
-        const templateJson = fs.existsSync(
-            `./usersData.json`
+        fs.writeFileSync(
+          `./data.json`,
+          JSON.stringify({
+            data: data,
+          })
         );
-        if (templateJson === false) {
-            fs.writeFileSync(
-                `./userData.json`,
-                JSON.stringify({
-                    data: data
-                })
-            );
-        }
-        else {
-            const templateJson = fs.readFileSync(
-                `./users
-                Data.json`
-            );
-            // if (typeof templateJson === "object") {
-            //     // const template0 = JSON.parse(templateJson).template0;
-            //     // const template1 =
-            //     //     responseFromScanFingerperint.data.FingerprintTemplate
-            //     //         .template0;
-            //     // const template_image0 =
-            //     //     JSON.parse(templateJson).template_image0;
-            //     // const template_image1 =
-            //     //     responseFromScanFingerperint.data.FingerprintTemplate
-            //     //         .template_image0;
+      } else {
+        let templateJson = fs.readFileSync(`./data.json`);
 
-            //     fs.writeFileSync(
-            //         `./userData.json`,
-            //         JSON.stringify({
-            //             data: body
-            //         })
-            //     );
-            // }
-        }
+        // Parse the JSON string
+        let jsonData = JSON.parse(templateJson.toString());
 
-        return NextResponse.json(body);
-        // const product = await prismadb.product.create({
-        //     data: {
-        //         title,
-        //         description
-        //     }
-        // });
+        jsonData?.data.push(body);
+        fs.writeFileSync(
+          `./data.json`,
+          JSON.stringify({
+            data: jsonData.data,
+          })
+        );
+      }
 
-        // return NextResponse.json(product);
-
-    } catch (error) {
-
-        console.log("[PRODUCT_POST]", error);
-        return new NextResponse("Internal error", { status: 500 });
-
+      return NextResponse.json({
+        message: 'Data added successfully',
+        data: body,
+      });
+    } else {
+      throw { message: 'Invalid values', status: StatusCodes.BAD_REQUEST };
     }
+  } catch (error) {
+    console.log('[USER_CREATE]', error);
+    return new NextResponse('Internal server error', {
+      status: StatusCodes.INTERNAL_SERVER_ERROR,
+    });
+  }
 }
