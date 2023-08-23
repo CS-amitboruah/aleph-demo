@@ -1,6 +1,7 @@
 import fs from 'fs';
 import { StatusCodes } from 'http-status-codes';
 import { NextResponse } from 'next/server';
+import { APIConstant } from '../../../../constants/contants';
 
 function validateObjectValues(obj: Record<string, any>): boolean {
   return Object.values(obj).every((value) => !!value);
@@ -35,15 +36,18 @@ export async function POST(req: Request) {
       }
 
       return NextResponse.json({
-        message: 'Data added successfully',
+        message: APIConstant.success,
         data: body,
       });
     } else {
-      throw { message: 'Invalid values', status: StatusCodes.BAD_REQUEST };
+      throw {
+        message: APIConstant.invalidValue,
+        status: StatusCodes.BAD_REQUEST,
+      };
     }
   } catch (error) {
     console.log('[USER_CREATE]', req);
-    return new NextResponse('Internal server error', {
+    return new NextResponse(APIConstant.internalServer, {
       status: StatusCodes.INTERNAL_SERVER_ERROR,
     });
   }

@@ -2,7 +2,7 @@
 import AntButton from '@/components/common/Button/Button';
 import FormTitle from '@/components/common/FormTitle';
 import SelectInput from '@/components/formControls/SelectInput';
-import { formConstants } from '@/constants/formContants';
+import { formConstants } from '@/constants/contants';
 import { createUser } from '@/lib/createUser';
 import { FormWrapper } from '@/styles/Globalstyles';
 import { Form } from 'antd';
@@ -26,8 +26,8 @@ const page = () => {
       <Form form={form} onFinish={handleSubmit}>
         <SelectInput
           options={[
-            { label: 'English (EN)', value: 'EN' },
-            { label: 'Bambara (BM)', value: 'BM' },
+            { label: formConstants.en, value: 'EN' },
+            { label: formConstants.bm, value: 'BM' },
           ]}
           placeholder='Select'
           name='language'

@@ -9,4 +9,13 @@ export const formConstants = {
   phoneInvalid: 'Please enter a valid phone number.',
   invalidAge: 'Please enter a valid age.',
   languageRequired: 'Language is required.',
+  en: 'English (EN)',
+  bm: 'Bambara (BM)',
+};
+
+export const APIConstant = {
+  success: 'Data added successfully',
+  invalidValue: 'Invalid values',
+  internalServer: 'Internal server error',
+  noData: 'No data found',
 };

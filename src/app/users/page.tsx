@@ -1,10 +1,9 @@
 'use client';
 import TableTitle from '@/components/common/TableTitle';
 import { TableWrapper } from '@/styles/Globalstyles';
-import { Button, Table } from 'antd';
+import { Table } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
-
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { getAllUser } from '../../lib/getAllUser';
 import AntButton from '../../components/common/Button/Button';
 import { getTotalUser } from '../../lib/getTotalUser';
@@ -52,6 +51,7 @@ const page = () => {
   const [userData, setUserData] = useState<DataType[]>([]);
 
   getTotalUser().then((res) => setTotalUser(res.total));
+
   const handleListRecord = async () => {
     let response = await getAllUser();
     setUserData(response?.data);
@@ -61,12 +61,12 @@ const page = () => {
     <TableWrapper>
       <TableTitle title='FINAL PAGE' />
       <span>
-        Current Records: {totalUser}{' '}
-        {userData.length === 0 && (
+        Current Records: {totalUser || 0}{' '}
+        {userData?.length === 0 && (
           <AntButton text='List Record' onClick={() => handleListRecord()} />
         )}
       </span>
-      {userData.length > 0 && (
+      {userData?.length > 0 && (
         <Table columns={columns} dataSource={userData} pagination={false} />
       )}
     </TableWrapper>

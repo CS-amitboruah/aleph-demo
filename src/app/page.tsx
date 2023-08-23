@@ -2,7 +2,7 @@
 import { Form } from 'antd';
 import TextInput from '@/components/formControls/TextInput';
 import AntButton from '@/components/common/Button/Button';
-import { formConstants } from '@/constants/formContants';
+import { formConstants } from '@/constants/contants';
 import { useRouter } from 'next/navigation';
 import { FormWrapper } from '@/styles/Globalstyles';
 import FormTitle from '@/components/common/FormTitle';

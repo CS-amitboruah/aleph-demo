@@ -1,5 +1,4 @@
 'use client';
-
 import AntButton from '@/components/common/Button/Button';
 import FormTitle from '@/components/common/FormTitle';
 import TextInput from '@/components/formControls/TextInput';
@@ -7,7 +6,7 @@ import {
   PhoneNumberRegex,
   ageMatch,
   formConstants,
-} from '@/constants/formContants';
+} from '@/constants/contants';
 import { FormWrapper } from '@/styles/Globalstyles';
 import { Form } from 'antd';
 import { useRouter, useSearchParams } from 'next/navigation';

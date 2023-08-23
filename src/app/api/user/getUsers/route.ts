@@ -1,6 +1,7 @@
 import fs from 'fs';
 import { StatusCodes } from 'http-status-codes';
 import { NextResponse } from 'next/server';
+import { APIConstant } from '../../../../constants/contants';
 
 export async function GET() {
   try {
@@ -15,13 +16,13 @@ export async function GET() {
       });
     } else {
       return NextResponse.json({
-        message: 'No data found',
+        message: APIConstant.noData,
         status: StatusCodes.NOT_FOUND,
       });
     }
   } catch (error) {
     console.log('[USER_GET]', error);
-    return new NextResponse('Internal server error', {
+    return new NextResponse(APIConstant.internalServer, {
       status: StatusCodes.INTERNAL_SERVER_ERROR,
     });
   }
