@@ -1,4 +1,4 @@
-import { createGlobalStyle, styled } from "styled-components";
+import { createGlobalStyle, styled } from 'styled-components';
 
 export default createGlobalStyle`
   body {
@@ -6,7 +6,8 @@ export default createGlobalStyle`
     padding: 0;
     /* background: #1800e7; */
     background: rgb(33,62,147);
-background: linear-gradient(180deg, rgba(33,62,147,1) 0%, rgba(45,96,219,1) 100%);
+    background: linear-gradient(180deg, rgba(33,62,147,1) 0%, rgba(45,96,219,1) 100%);
+    /* font-family: 'Hanken Grotesk', sans-serif !important; */
   }
 `;
 
