@@ -2,17 +2,15 @@ import fs from 'fs';
 import { StatusCodes } from 'http-status-codes';
 import { NextResponse } from 'next/server';
 
-export async function GET(req: Request, res: Response) {
+export async function GET() {
   try {
     const templateJson = fs.existsSync(`./data.json`);
 
     if (templateJson === true) {
       let readTemplateJson = fs.readFileSync(`./data.json`);
-
-      // Parse the JSON string
       let jsonData = JSON.parse(readTemplateJson.toString());
+
       return NextResponse.json({
-        total: jsonData?.data.length,
         data: jsonData?.data,
       });
     } else {

@@ -1,6 +1,6 @@
-import { Button } from "antd";
-import React from "react";
-import { styled } from "styled-components";
+import { Button } from 'antd';
+import React from 'react';
+import { styled } from 'styled-components';
 
 const ButtonWrapper = styled(Button)`
   padding: 12px 32px;
@@ -16,12 +16,12 @@ const ButtonWrapper = styled(Button)`
 `;
 type ButtonProps = {
   text: string;
-  htmlType?: "button" | "reset" | "submit";
+  htmlType?: 'button' | 'reset' | 'submit';
   onClick?: () => void;
 };
 const AntButton = ({ text, htmlType, onClick }: ButtonProps) => {
   return (
-    <ButtonWrapper htmlType={htmlType || "button"} onClick={onClick}>
+    <ButtonWrapper htmlType={htmlType || 'button'} onClick={onClick}>
       {text}
     </ButtonWrapper>
   );

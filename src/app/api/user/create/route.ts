@@ -1,6 +1,6 @@
-import fs from "fs";
-import { StatusCodes } from "http-status-codes";
-import { NextResponse } from "next/server";
+import fs from 'fs';
+import { StatusCodes } from 'http-status-codes';
+import { NextResponse } from 'next/server';
 
 function validateObjectValues(obj: Record<string, any>): boolean {
   return Object.values(obj).every((value) => !!value);
@@ -9,7 +9,7 @@ function validateObjectValues(obj: Record<string, any>): boolean {
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    console.log(body, "bodu");
+
     if (validateObjectValues(body)) {
       const templateJson = fs.existsSync(`./data.json`);
       if (templateJson === false) {
@@ -23,8 +23,6 @@ export async function POST(req: Request) {
         );
       } else {
         let templateJson = fs.readFileSync(`./data.json`);
-
-        // Parse the JSON string
         let jsonData = JSON.parse(templateJson.toString());
 
         jsonData?.data.push(body);
@@ -37,15 +35,15 @@ export async function POST(req: Request) {
       }
 
       return NextResponse.json({
-        message: "Data added successfully",
+        message: 'Data added successfully',
         data: body,
       });
     } else {
-      throw { message: "Invalid values", status: StatusCodes.BAD_REQUEST };
+      throw { message: 'Invalid values', status: StatusCodes.BAD_REQUEST };
     }
   } catch (error) {
-    console.log("[USER_CREATE]", req);
-    return new NextResponse("Internal server error", {
+    console.log('[USER_CREATE]', req);
+    return new NextResponse('Internal server error', {
       status: StatusCodes.INTERNAL_SERVER_ERROR,
     });
   }
