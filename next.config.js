@@ -1,10 +1,16 @@
+const path = require('path')
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {}
 
-// module.exports = nextConfig
-const withNextIntl = require('next-intl/plugin')(
-   
-    './i18n.ts'
-  )
-
-  module.exports =withNextIntl(nextConfig)
+module.exports = nextConfig
+module.exports = {
+    /* Add Your Scss File Folder Path Here */
+    sassOptions: {
+      includePaths: [path.join(__dirname, 'styles')],
+    },
+    experimental: {
+        serverActions: true,
+      }
+  }
+  

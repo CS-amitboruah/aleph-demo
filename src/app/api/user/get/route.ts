@@ -1,29 +1,31 @@
-import fs from 'fs';
-import { StatusCodes } from 'http-status-codes';
-import { NextResponse } from 'next/server';
+import fs from "fs";
+import { StatusCodes } from "http-status-codes";
+import { NextResponse } from "next/server";
 
-export async function GET(req: Request, res: Response) {
+export async function POST(req: Request, res: Response) {
   try {
     const templateJson = fs.existsSync(`./data.json`);
 
     if (templateJson === true) {
       let readTemplateJson = fs.readFileSync(`./data.json`);
+      const data = await req.json();
 
       // Parse the JSON string
       let jsonData = JSON.parse(readTemplateJson.toString());
+
+      let getData = jsonData.data.filter((name: any) => name.name === data);
+
       return NextResponse.json({
-        total: jsonData?.data.length,
-        data: jsonData?.data,
+        data: getData?.[0],
       });
     } else {
       return NextResponse.json({
-        message: 'No data found',
+        message: "No data found",
         status: StatusCodes.NOT_FOUND,
       });
     }
   } catch (error) {
-    console.log('[USER_GET]', error);
-    return new NextResponse('Internal server error', {
+    return new NextResponse("Internal server error", {
       status: StatusCodes.INTERNAL_SERVER_ERROR,
     });
   }

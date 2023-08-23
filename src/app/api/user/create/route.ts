@@ -9,7 +9,7 @@ function validateObjectValues(obj: Record<string, any>): boolean {
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    console.log(body, "bodu");
+
     if (validateObjectValues(body)) {
       const templateJson = fs.existsSync(`./data.json`);
       if (templateJson === false) {
@@ -44,7 +44,6 @@ export async function POST(req: Request) {
       throw { message: "Invalid values", status: StatusCodes.BAD_REQUEST };
     }
   } catch (error) {
-    console.log("[USER_CREATE]", req);
     return new NextResponse("Internal server error", {
       status: StatusCodes.INTERNAL_SERVER_ERROR,
     });

@@ -8,6 +8,52 @@ export default createGlobalStyle`
     background: rgb(33,62,147);
 background: linear-gradient(180deg, rgba(33,62,147,1) 0%, rgba(45,96,219,1) 100%);
   }
+  .form-title{color: #fff;
+  width: 100%;
+  margin-bottom: 20px
+  }
+  .user-detail-wrapper{
+    width: 80%;
+  overflow-y: auto;
+  margin: 0 auto;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .ant-select {
+    .ant-select-selector {
+      height: auto;
+      width: auto;
+      padding: 10px 40px !important;
+    }
+  }
+  .ant-card-body {
+    padding-top: 0;
+  }
+  .final-page-title {
+    margin: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 400px;
+    h3 {
+      color: #fff;
+      font-size: 32px;
+    }
+  }
+  .card-details {
+    ul {
+      list-style: none;
+    }
+    li {
+      font-size: 16px;
+    }
+  }
+  }
+  .form-wrrapper{
+    
+  }
 `;
 
 export const FormWrapper = styled.div`

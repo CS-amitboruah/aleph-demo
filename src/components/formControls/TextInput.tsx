@@ -7,15 +7,7 @@ const TextInputWrapper = styled(Form.Item)`
     color: #fff;
   }
 `;
-const TextInput = ({
-  type,
-  placeholder,
-  name,
-  rules,
-  label,
-  value,
-  setInitialState,
-}: any) => {
+const TextInput = ({ type, placeholder, name, rules }: any) => {
   return (
     <TextInputWrapper name={name} rules={rules} className="input-container">
       <Input type={type} placeholder={placeholder} className="input-field" />

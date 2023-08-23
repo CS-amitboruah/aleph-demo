@@ -11,10 +11,6 @@ export type TextInputProps = {
   value?: string;
 } & FormInput;
 
-export type RadioInputProps = {
-  label: string;
-} & FormInput;
-
 type optionType = {
   label: string;
   value: string;

@@ -14,11 +14,13 @@ const ButtonWrapper = styled(Button)`
     color: #fff !important;
   }
 `;
+
 type ButtonProps = {
   text: string;
   htmlType?: "button" | "reset" | "submit";
   onClick?: () => void;
 };
+
 const AntButton = ({ text, htmlType, onClick }: ButtonProps) => {
   return (
     <ButtonWrapper htmlType={htmlType || "button"} onClick={onClick}>

@@ -9,3 +9,7 @@ export const formConstants = {
   invalidAge: "Please enter a valid age.",
   languageRequired: "Language is required.",
 };
+export const LanguageOption = [
+  { label: "EN", value: "en" },
+  { label: "BM", value: "bm" },
+];
