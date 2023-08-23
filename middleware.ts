@@ -1,38 +1,15 @@
-import { NextRequest, NextResponse } from "next/server";
-import { match } from "@formatjs/intl-localematcher";
-import Negotiator from "negotiator";
+import createMiddleware from "next-intl/middleware";
 
-let locales = ["en", "es"];
-export let defaultLocale = "en";
+export default createMiddleware({
+  // A list of all locales that are supported
+  locales: ["en", "bm"],
 
-function getLocale(request: Request): string {
-  const headers = new Headers(request.headers);
-  const acceptLanguage = headers.get("accept-language");
-  if (acceptLanguage) {
-    headers.set("accept-language", acceptLanguage.replaceAll("_", "-"));
-  }
-
-  const headersObject = Object.fromEntries(headers.entries());
-  const languages = new Negotiator({ headers: headersObject }).languages();
-  return match(languages, locales, defaultLocale);
-}
-
-export function middleware(request: NextRequest) {
-  let locale = getLocale(request) ?? defaultLocale;
-  const pathname = request.nextUrl.pathname;
-
-  const newUrl = new URL(`/${locale}${pathname}`, request.nextUrl);
-
-  // e.g. incoming request is /products
-  // The new URL is now /en/products
-  return NextResponse.rewrite(newUrl);
-}
+  // If this locale is matched, pathnames work without a prefix (e.g. `/about`)
+  defaultLocale: "en",
+});
 
 export const config = {
-  matcher: [
-    // Skip all internal paths (_next)
-    "/((?!_next|api|favicon.ico).*)",
-    // Optional: only run on root (/) URL
-    // '/'
-  ],
+  // Skip all paths that should not be internationalized. This example skips the
+  // folders "api", "_next" and all files with an extension (e.g. favicon.ico)
+  matcher: ["/((?!api|_next|.*\\..*).*)"],
 };

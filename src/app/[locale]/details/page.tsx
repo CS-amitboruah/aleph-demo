@@ -3,7 +3,11 @@
 import AntButton from "@/components/common/Button/Button";
 import FormTitle from "@/components/common/FormTitle";
 import TextInput from "@/components/formControls/TextInput";
-import { formConstants } from "@/constants/formContants";
+import {
+  PhoneNumberRegex,
+  ageMatch,
+  formConstants,
+} from "@/constants/formContants";
 import { FormWrapper } from "@/styles/Globalstyles";
 import { Form } from "antd";
 import { useRouter } from "next/navigation";
@@ -31,6 +35,10 @@ const page = () => {
               required: true,
               message: formConstants.ageRequire,
             },
+            {
+              pattern: ageMatch,
+              message: formConstants.invalidAge,
+            },
           ]}
         />
         <TextInput
@@ -41,6 +49,10 @@ const page = () => {
             {
               required: true,
               message: formConstants.phoneRequire,
+            },
+            {
+              pattern: PhoneNumberRegex,
+              message: formConstants.phoneInvalid,
             },
           ]}
         />

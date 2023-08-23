@@ -2,8 +2,9 @@
 import AntButton from "@/components/common/Button/Button";
 import FormTitle from "@/components/common/FormTitle";
 import SelectInput from "@/components/formControls/SelectInput";
+import { formConstants } from "@/constants/formContants";
 import { createUser } from "@/lib/createUser";
-import Globalstyles, { FormWrapper } from "@/styles/Globalstyles";
+import { FormWrapper } from "@/styles/Globalstyles";
 import { Form } from "antd";
 import React from "react";
 
@@ -30,7 +31,7 @@ const page = () => {
           rules={[
             {
               required: true,
-              message: "Select language is required",
+              message: formConstants.languageRequired,
             },
           ]}
         />
