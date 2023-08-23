@@ -26,7 +26,15 @@ const DisplayUser = async ({
         <LanguageSelector pathLang={locale} name={name} />
       </div>
 
-      <Card title="User Details" bordered={false} style={{ width: 400 }}>
+      <Card
+        title="User Details"
+        bordered={false}
+        style={{
+          width: 400,
+          fontFamily:
+            "'__Hanken_Grotesk_167e89', '__Hanken_Grotesk_Fallback_167e89'",
+        }}
+      >
         <UserCardDetails
           title="Basic Details"
           key1={staticContent.name}
